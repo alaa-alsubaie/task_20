@@ -25,6 +25,9 @@ from api.views import (
     RestaurantDeleteView,
     RestaurantCreateView,
 )
+from rest_framework_jwt.views import obtain_jwt_token
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -47,6 +50,9 @@ urlpatterns = [
     path('api/<int:restaurant_id>/detail/', RestaurantDetailView.as_view(), name='api-detail'),
     path('api/<int:restaurant_id>/update/', RestaurantUpdateView.as_view(), name='api-update'),
     path('api/<int:restaurant_id>/delete/', RestaurantDeleteView.as_view(), name='api-delete'),
+
+
+    path('api/token-auth/', obtain_jwt_token, name='api-login'),
 ]
 
 if settings.DEBUG:
